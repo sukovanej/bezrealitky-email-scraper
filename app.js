@@ -2,12 +2,12 @@ const email = require("./src/email");
 const facebook = require("./src/facebook");
 
 const {
-    EMAIL_USER,
-    EMAIL_PASSWORD,
-    FB_EMAIL,
-    FB_PASSWORD,
-    THREAD_ID,
-} = require('dotenv').config().parsed;
+  EMAIL_USER,
+  EMAIL_PASSWORD,
+  FB_EMAIL,
+  FB_PASSWORD,
+  THREAD_ID,
+} = require("dotenv").config().parsed;
 
 imap = email.createImap(EMAIL_USER, EMAIL_PASSWORD);
 const callback = (urls) => {

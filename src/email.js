@@ -48,19 +48,11 @@ function getNewUrls(imap, callback) {
             markSeen: true,
           });
         } catch (err) {
-          console.error("Shit happened")
+          console.error("Shit happened");
           console.warn(err.message);
           imap.end();
           process.exit(1);
         }
-
-        imap.setFlags(results, ["\\Seen"], function (err) {
-          if (!err) {
-            console.log("marked as read");
-          } else {
-            console.log(JSON.stringify(err, null, 2));
-          }
-        });
 
         f.on("message", function (msg, seqno) {
           msg.on("body", function (stream, info) {
