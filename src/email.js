@@ -1,6 +1,7 @@
 const Imap = require("imap");
 const simpleParser = require("mailparser").simpleParser;
 const cheerio = require("cheerio");
+const process = require("process");
 
 function createImap(email, password) {
   return new Imap({
@@ -37,10 +38,7 @@ function getNewUrls(imap, callback) {
     openInbox(function (err, box) {
       if (err) throw err;
 
-      const searchFilters = [
-        "UNSEEN",
-        ["SINCE", "November 1, 2020"],
-      ];
+      const searchFilters = ["UNSEEN", ["SINCE", "November 1, 2020"]];
 
       imap.search(searchFilters, function (err, results) {
         try {
@@ -51,7 +49,7 @@ function getNewUrls(imap, callback) {
         } catch (err) {
           console.warn(err.message);
           imap.end();
-          return;
+          process.exit(1);
         }
 
         imap.setFlags(results, ["\\Seen"], function (err) {
