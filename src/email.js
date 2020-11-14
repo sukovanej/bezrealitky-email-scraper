@@ -41,12 +41,14 @@ function getNewUrls(imap, callback) {
       const searchFilters = ["UNSEEN", ["SINCE", "November 1, 2020"]];
 
       imap.search(searchFilters, function (err, results) {
+        let f = undefined;
         try {
-          const f = imap.fetch(results, {
+          f = imap.fetch(results, {
             bodies: [""],
             markSeen: true,
           });
         } catch (err) {
+          console.error("Shit happened")
           console.warn(err.message);
           imap.end();
           process.exit(1);

@@ -17,6 +17,6 @@ const callback = (urls) => {
     message = message.concat(` - ${url}\n`);
   }
 
-  //facebook.sendMessage(FB_EMAIL, FB_PASSWORD, THREAD_ID, message);
+  facebook.sendMessage(FB_EMAIL, FB_PASSWORD, THREAD_ID, message);
 };
 email.getNewUrls(imap, callback);
