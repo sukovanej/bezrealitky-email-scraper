@@ -11,7 +11,7 @@ const {
 
 imap = email.createImap(EMAIL_USER, EMAIL_PASSWORD);
 const callback = (urls) => {
-  let message = "Novy baraky, kundy!\n\n";
+  let message = "Nový baráky, moje štěňátka!\n\n";
 
   for (url of urls) {
     message = message.concat(` - ${url}\n`);
